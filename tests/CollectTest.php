@@ -27,7 +27,7 @@ class CollectTest extends TestCase
         $collection = new Collect(['a' => 1, 'b' => 2, 'c' => 3]);
         $values = $collection->values()->toArray();
         $expectedValues = [1, 2, 3];
-        $this->assertEquals($expectedValues, $values);
+        $this->assertEquals($values, $expectedValues);
     }
 
     public function testGet()
@@ -43,5 +43,13 @@ class CollectTest extends TestCase
         $exceptedCollection = $collection->except('b')->toArray();
         $expectedCollection = ['a' => 1, 'c' => 3];
         $this->assertEquals($expectedCollection, $exceptedCollection);
+    }
+
+    public function testFirst()
+    {
+        $collection = new Collect(['a' => 1, 'b' => 2, 'c' => 3]);
+        $firstElem = $collection->first();
+        $expectedElem = 1;
+        $this->assertEquals($expectedElem, $firstElem);
     }
 }
